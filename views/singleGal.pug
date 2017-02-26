@@ -1,0 +1,28 @@
+.row
+    .col-md-10.col-md-offset-1
+        .carousel.slide#k-gallery-slider(data-ride="carousel")
+            ol.carousel-indicators
+                li(data-target="#k-gallery-slider" data-slide-to="0" class="active")
+                li(data-target="#k-gallery-slider" data-slide-to="1")
+                li(data-target="#k-gallery-slider" data-slide-to="2")
+                li(data-target="#k-gallery-slider" data-slide-to="3")
+                li(data-target="#k-gallery-slider" data-slide-to="4")
+            
+            .carousel-inner(role="listbox")
+                .item.active
+                    img(src="images/gal/2013-Ferrari-458-Italia-Front-Three-Quarters-View.jpg")
+                .item
+                    img(src="images/gal/2016_ferrari_f12tdf_amazing_car_wallpapers_.jpg")
+                .item
+                    img(src="images/gal/160061-car-Ferrari_GTC4Lusso_fr_3_4_LR.jpg")
+                .item
+                    img(src="images/gal/F40ferarri20090509.jpg")
+                .item
+                    img(src="images/gal/Ferrari_288_GTO_(1).JPG")
+            
+            a.left.carousel-control(href="#k-gallery-slider" role="button" data-slide="prev")
+                span(class="glyphicon glyphicon-chevron-left" aria-hidden="true")
+                span(class="sr-only") Previous
+            a(class="right carousel-control" href="#k-gallery-slider" role="button" data-slide="next")
+                span(class="glyphicon glyphicon-chevron-right" aria-hidden="true")
+                span(class="sr-only") Next
