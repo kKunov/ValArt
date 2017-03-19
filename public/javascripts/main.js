@@ -10,9 +10,29 @@
     }
 
     function galClicked(e) {
-        console.log($(e.currentTarget).attr("data-gal-id"));
+        var galleryName = $(this).attr("data-gal-id");
+        var $indexatorContainer = $(".k-indexator-container"),
+            $imagesContainer = $(".k-images-container"),
+            classActive = "\" class=\"active\"",
+            i;
+
         $(".k-page-views").attr("style" ,"display:none;");
         $(".k-single-gal").removeAttr("style");
+        $indexatorContainer.empty();
+        $imagesContainer.empty();
+
+        jQuery.get('galleries/galleriNamesInFolder?galleryName=' + galleryName, function(result) {
+            for (i = 0; i < result.length; i++){
+                $indexatorContainer.append(
+                    "<li data-target=\"#k-gallery-slider\" data-slider-to=\"" + i + (i === 0 ? classActive : "") + "\"></li>"
+                );
+
+                $imagesContainer.append(
+                    "<div class=\"item" + (i === 0 ? " active" : "") + "\">" + 
+                    "<img src=\"images/gal/" + galleryName + "/" + result[i] + "\"></div>"
+                );
+            }
+        });
     }
     
     $("body").on("click", ".k-galleries-navbar", galleriesClicked);
