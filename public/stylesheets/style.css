@@ -149,3 +149,23 @@ span.glyphicon.glyphicon-phone-alt {
     margin-top: 5px;
     margin-bottom: 5px;
 }
+
+.k-barcelona-name {
+    text-align: center;
+    font-size: 3em;
+    font-family: Aparajita;
+    color: #0000d6;
+    text-shadow: 1px 1px #000000;
+    margin-top: -1em;
+}
+
+
+/* GALLERY TAB STYLES*/
+
+.k-gall-header-3 {
+    color: #0000d6;
+}
+
+.k-gallery-single-pic {
+
+}

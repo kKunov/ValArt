@@ -24,7 +24,7 @@
         jQuery.get('galleries/galleriNamesInFolder?galleryName=' + galleryName, function(result) {
             for (i = 0; i < result.length; i++){
                 $indexatorContainer.append(
-                    "<li data-target=\"#k-gallery-slider\" data-slider-to=\"" + i + (i === 0 ? classActive : "") + "\"></li>"
+                    "<li data-target=\"#k-gallery-slider\" data-slide-to=\"" + i + (i === 0 ? classActive : "") + "\"></li>"
                 );
 
                 $imagesContainer.append(
