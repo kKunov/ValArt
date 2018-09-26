@@ -112,9 +112,9 @@ p.navbar-text.navbar-right.k-nav-name {
     width: 20%;
 }
 
-col-lg-4 .img-responsive.center-block { /* For large display!!! */
-    height: 15%;
-    width: 15%;
+.col-lg-4 .img-responsive.center-block { /* For large display!!! */
+    height: 65%;
+    width: 65%;
 }
 
 .k-studio-name-and-city {
