@@ -115,6 +115,15 @@ nav.k-nav ul.k-nav-bar hr.k-nav-bar-hr {
     max-width: 18.7vw;
 }
 
+/* GALLERY */
+.k-single-gal {
+    position: fixed;
+    height: 50vh;
+    width: 50vw;
+    top: 31vh;
+    left: 45vw;
+}
+
 /* 
 nav.navbar.navbar-default.navbar-static-top .container-fluid .collapse.navbar-collapse ul.nav.navbar-nav li a {
     color: #0000d6;
@@ -136,7 +145,7 @@ p.navbar-text.navbar-right.k-nav-name {
     margin-top: 0px;
 } */
 
-.home_first_header {
+/* .home_first_header {
     text-align: center;
     font-family: Gabriola;
     color: #ff0707;
@@ -270,4 +279,4 @@ span.glyphicon.glyphicon-phone-alt {
 
 .k-gall-header-3 {
     color: #0000d6;
-}
+} */
