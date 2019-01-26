@@ -1,17 +1,17 @@
 !function () {
-    function homeBtnClicked() {
-        $(".k-page-views").attr("style" ,"display:none;");
-        $(".homeInfo").removeAttr("style");
-    }
+    var $body = $("body"),
+        galleryLoaded = false;
 
-    function galClicked(e) {
+    function galClicked() {
         var $indexatorContainer = $(".k-indexator-container"),
             $imagesContainer = $(".k-images-container"),
             classActive = "\" class=\"active\"",
             i;
+        
+        if (galleryLoaded) {
+            return;
+        }
 
-        $(".k-page-views").attr("style" ,"display:none;");
-        $(".k-single-gal").removeAttr("style");
         $indexatorContainer.empty();
         $imagesContainer.empty();
 
@@ -27,7 +27,8 @@
                 );
             }
 
-            nextPrevBtnClicked();
+            galleryLoaded = true;
+            setTimeout(nextPrevBtnClicked, 100);
         });
     }
     
@@ -37,6 +38,10 @@
             imgHeight = $img.height(),
             imgWidth = $img.width(),
             newImgWidth;
+
+        if (!$('.k-nav-bar > .active').hasClass('k-galleries-navbar')){
+            return;
+        }
 
         if (imgHeight > imgWidth) {
             $img.attr("style", "max-width: none; max-height: 61vh;");
@@ -51,8 +56,31 @@
         }
     }
 
-    $("body").on("click", ".k-galleries-navbar", galClicked);
-    $("body").on("click", ".k-home-navbar", homeBtnClicked);
-    $("body").on("slid.bs.carousel", "#k-gallery-slider", nextPrevBtnClicked);
+
+    function handleNavClicke(e) {
+        var $this = $(this);
+        
+        $this.siblings('.active').removeClass('active');
+        $this.addClass('active');
+
+        $(".k-page-views").attr("style" ,"display:none;");
+
+        if ($this.hasClass('k-biography')) {
+            $('.k-bio-view').removeAttr('style');
+        }
+        else if ($this.hasClass('k-galleries-navbar')){
+            $(".k-single-gal").removeAttr("style");
+            galClicked();
+        }
+        else if ($this.hasClass('k-contacts')) {
+            $(".k-contacts-view").removeAttr("style");
+        }
+    }
+
+    $body
+        .on("slid.bs.carousel", "#k-gallery-slider", nextPrevBtnClicked)
+        .on('click', '.k-nav-bar > li:not(.active)', handleNavClicke)
+    ;
+
     $(window).on('resize', nextPrevBtnClicked);
 }();
