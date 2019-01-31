@@ -9,6 +9,7 @@
             i;
         
         if (galleryLoaded) {
+            nextPrevBtnClicked();
             return;
         }
 
@@ -33,29 +34,53 @@
     }
     
     function nextPrevBtnClicked(e) {
-        var $slider = $('#k-gallery-slider'),
-            $img = $slider.find(".active > img"),
-            imgHeight = $img.height(),
-            imgWidth = $img.width(),
-            newImgWidth;
+        var $slider,
+            $img,
+            $view,
+            imgHeight,
+            imgWidth,
+            newImgWidth,
+            newImgHeight,
+            $html;
+            
+        onResizeDesideIfItIsPhoneStanding();
 
         if (!$('.k-nav-bar > .active').hasClass('k-galleries-navbar')){
             return;
         }
 
-        if (imgHeight > imgWidth) {
-            $img.attr("style", "max-width: none; max-height: 61vh;");
-            newImgWidth = $img.width();
-            $slider.attr("style", "max-width: " + newImgWidth + "px;");
-            $slider.closest(".k-single-gal").attr("style", "left: 56vw;");
-        }
-        else {
-            $slider.removeAttr("style");
-            $img.removeAttr("style");
-            $slider.closest(".k-single-gal").removeAttr("style");
+        $slider = $('#k-gallery-slider');
+        $view = $slider.closest('.k-single-gal');
+        $img = $slider.find(".active > img");
+        imgHeight = $img.height();
+        imgWidth = $img.width();
+        newImgWidth;
+        $html = $('html');
+
+        if ($html.width >= $html.height) {
+            if (imgHeight > imgWidth) {
+                removeStylesOfTheGalViewHtml($slider, $img, $view);
+
+                $img.attr('style', 'max-height: 63vh;');
+                newImgWidth = $img.width();
+                $slider.attr("style", "max-width: " + newImgWidth + "px;");
+                $slider.closest(".k-single-gal").attr("style", "left: calc(56vw + (14vw - " + (newImgWidth / 2) + "px));");
+            }
+            else {
+                removeStylesOfTheGalViewHtml($slider, $img, $view);
+
+                $img.attr('style', 'max-width: 50vw;');
+                newImgHeight = $img.height();
+                $slider.attr("style", "max-height: " + newImgHeight + "px;");
+            }
         }
     }
 
+    function removeStylesOfTheGalViewHtml($slider, $img, $view) {
+        $img.removeAttr("style");
+        $slider.removeAttr("style");
+        $view.removeAttr("style");
+    }
 
     function handleNavClicke(e) {
         var $this = $(this);
@@ -76,6 +101,27 @@
             $(".k-contacts-view").removeAttr("style");
         }
     }
+
+    function onResizeDesideIfItIsPhoneStanding() {
+        var $html = $('html');
+
+        if ($html.height() > $html.width()) {
+            $('.k-nav').addClass('phone');
+            $('.k-top-right-container').addClass('phone');
+            $('.k-val-kun-logo').addClass('phone');
+            $('.k-single-gal').addClass('phone');
+            $('.k-bottom-left-container').addClass('phone');
+        }
+        else {
+            $('.k-nav').removeClass('phone');
+            $('.k-top-right-container').removeClass('phone');
+            $('.k-val-kun-logo').removeClass('phone');
+            $('.k-single-gal').removeClass('phone');
+            $('.k-bottom-left-container').removeClass('phone');
+        }
+    }
+
+    onResizeDesideIfItIsPhoneStanding();
 
     $body
         .on("slid.bs.carousel", "#k-gallery-slider", nextPrevBtnClicked)

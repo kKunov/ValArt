@@ -1,6 +1,6 @@
 html {
-    min-width: 800px;
-    min-height: 600px;
+    width: 100%;
+    height: 100%;
 }
 
 body {
@@ -9,6 +9,8 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    width: 100%;
+    height: 100%;
 }
 
 nav.navbar.navbar-default.navbar-static-top {
@@ -27,6 +29,13 @@ nav.k-nav {
     color: #fff;
     margin-top: 5vh;
     font-family: 'Guatami'
+}
+
+/* PHONE */ 
+nav.k-nav.phone {
+    width: 28vw;
+    height: 79vh;
+    left: 8vw;
 }
 
 nav.k-nav ul.k-nav-bar {
@@ -81,6 +90,12 @@ nav.k-nav ul.k-nav-bar hr.k-nav-bar-hr {
     text-align: center;
 }
 
+/* PHONE */
+.k-bottom-left-container.phone {
+    top: 87vh;
+    left: 16vw;
+}
+
 .k-val-art-left-bottom {
     font-size: 4em;
 }
@@ -90,11 +105,18 @@ nav.k-nav ul.k-nav-bar hr.k-nav-bar-hr {
     margin-top: -33px;
 }
 
+/* TOP RIGHT TEXT */
 .k-top-right-container {
     position: fixed;
     top: 8vh;
     left: 56vw;
     text-align: center;
+}
+
+/* TOP RIGHT TEXT PHONE */
+.k-top-right-container.phone {
+    top: 24vh;
+    left: 53vw;
 }
 
 .k-first-text-top {
@@ -105,6 +127,7 @@ nav.k-nav ul.k-nav-bar hr.k-nav-bar-hr {
     font-size: 2.4em;
 }
 
+/* LOGO */
 .k-val-kun-logo {
     position: fixed;
     left: 5.3vw;
@@ -113,17 +136,40 @@ nav.k-nav ul.k-nav-bar hr.k-nav-bar-hr {
 
 .k-val-kun-logo img {
     height: 26vh;
-    max-width: 18.7vw;
+}
+
+/* LOGO PHONE */ 
+.k-val-kun-logo.phone {
+    left: 53vw;
+}
+
+.k-val-kun-logo img {
+    height: 20vh;
 }
 
 /* GALLERY */
 .k-single-gal {
     position: fixed;
-    height: 50vh;
-    width: 50vw;
-    top: 31vh;
-    left: 45vw;
+    height: 63%;
+    width: 50%;
+    top: 30%;
+    left: 45%;
 }
+
+/* PHONE */ 
+.k-single-gal.phone {
+    top: 36%;
+}
+
+
+/* .k-single-gal > .row, 
+.k-single-gal > .row > *,
+.k-single-gal #k-gallery-slider,
+.k-single-gal .k-images-container,
+.k-single-gal .item.active {
+    height: 100%;
+} */
+
 
 #k-gallery-slider {
     border-radius: 10px;
@@ -141,51 +187,54 @@ nav.k-nav ul.k-nav-bar hr.k-nav-bar-hr {
 }
 
 /* BIO */
+
 .k-bio-view {
     position: fixed;
-    max-height: 50vh;
-    width: 50vw;
-    top: 31vh;
-    left: 45vw;
+    max-height: 58%;
+    width:  50%;
+    top: 30%;
+    left: 44%;
+
+    padding-top: 2%;
+    padding-bottom: 3%;
+    padding-left: 2%;
+    padding-right: 2%;
+
     background-color: gray;
-    border-radius: 20px;
-    padding-top: 20px;
-    padding-bottom: 30px;
-    padding-left: 20px;
-    /* padding-right: 20px; */
-    
     color: white;
 
+    border-radius: 20px;
     -moz-box-shadow: 0 0 20px 3px #fff;
     -webkit-box-shadow: 0 0 20px 3px #fff;
     box-shadow: 0 0 20px 3px #fff;
 }
 
 .k-bio-container {
-    width: calc(50vw - 20px);
-    max-height: calc(50vh - 50px);
+    width: 100%;
+    max-height: 45vh;
     overflow: auto;
-    padding-right: 20px
 }
 
+/* CONTACTS */
 .k-contacts-view {
     position: fixed;
-    max-height: 50vh;
-    width: 50vw;
-    top: 31vh;
-    left: 45vw;
+    max-height: 58%;
+    width:  50%;
+    top: 44%;
+    left: 44%;
+
+    padding-top: 1.4%;
+    padding-bottom: 1.8%;
+    padding-left: 2%;
+    padding-right: 2%;
+    
     background-color: gray;
     color: white;
-    border-radius: 20px;
-    padding-top: 20px;
-    padding-bottom: 30px;
-    padding-left: 20px;
-    padding-right: 20px;
-    overflow: auto;
-
+    
     -moz-box-shadow: 0 0 20px 3px #fff;
     -webkit-box-shadow: 0 0 20px 3px #fff;
     box-shadow: 0 0 20px 3px #fff;
+    border-radius: 20px;
 }
 
 
