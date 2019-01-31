@@ -187,7 +187,6 @@ nav.k-nav ul.k-nav-bar hr.k-nav-bar-hr {
 }
 
 /* BIO */
-
 .k-bio-view {
     position: fixed;
     max-height: 58%;
@@ -207,6 +206,11 @@ nav.k-nav ul.k-nav-bar hr.k-nav-bar-hr {
     -moz-box-shadow: 0 0 20px 3px #fff;
     -webkit-box-shadow: 0 0 20px 3px #fff;
     box-shadow: 0 0 20px 3px #fff;
+}
+
+/* PHONE */
+.k-bio-view {
+    top: 36%;
 }
 
 .k-bio-container {

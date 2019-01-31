@@ -111,6 +111,7 @@
             $('.k-val-kun-logo').addClass('phone');
             $('.k-single-gal').addClass('phone');
             $('.k-bottom-left-container').addClass('phone');
+            $('.k-bio-view').addClass('phone');
         }
         else {
             $('.k-nav').removeClass('phone');
@@ -118,6 +119,7 @@
             $('.k-val-kun-logo').removeClass('phone');
             $('.k-single-gal').removeClass('phone');
             $('.k-bottom-left-container').removeClass('phone');
+            $('.k-bio-view').removeClass('phone');
         }
     }
 
