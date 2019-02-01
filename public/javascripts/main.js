@@ -1,39 +1,10 @@
+var main = {};
+
 !function () {
     var $body = $("body"),
         galleryLoaded = false;
 
-    function galClicked() {
-        var $indexatorContainer = $(".k-indexator-container"),
-            $imagesContainer = $(".k-images-container"),
-            classActive = "\" class=\"active\"",
-            i;
-        
-        if (galleryLoaded) {
-            nextPrevBtnClicked();
-            return;
-        }
-
-        $indexatorContainer.empty();
-        $imagesContainer.empty();
-
-        jQuery.get('galleries/galleriNamesInFolder', function(result) {
-            for (i = 0; i < result.length; i++){
-                $indexatorContainer.append(
-                    "<li data-target=\"#k-gallery-slider\" data-slide-to=\"" + i + (i === 0 ? classActive : "") + "\"></li>"
-                );
-
-                $imagesContainer.append(
-                    "<div class=\"item" + (i === 0 ? " active" : "") + "\">" + 
-                    "<img src=\"images/gal/" + result[i] + "\"></div>"
-                );
-            }
-
-            galleryLoaded = true;
-            setTimeout(nextPrevBtnClicked, 100);
-        });
-    }
-    
-    function nextPrevBtnClicked(e) {
+    main.nextPrevBtnClicked = function nextPrevBtnClicked(e) {
         var $slider,
             $img,
             $view,
@@ -74,8 +45,73 @@
                 $slider.attr("style", "max-height: " + newImgHeight + "px;");
             }
         }
+    };
+
+    function onResizeDesideIfItIsPhoneStanding() {
+        var $html = $('html');
+
+        if ($html.height() > $html.width()) {
+            $('.k-nav').addClass('phone');
+            $('.k-top-right-container').addClass('phone');
+            $('.k-val-kun-logo').addClass('phone');
+            $('.k-single-gal').addClass('phone');
+            $('.k-bottom-left-container').addClass('phone');
+            $('.k-bio-view').addClass('phone');
+        }
+        else {
+            $('.k-nav').removeClass('phone');
+            $('.k-top-right-container').removeClass('phone');
+            $('.k-val-kun-logo').removeClass('phone');
+            $('.k-single-gal').removeClass('phone');
+            $('.k-bottom-left-container').removeClass('phone');
+            $('.k-bio-view').removeClass('phone');
+        }
     }
 
+    function galClicked() {
+        var $indexatorContainer = $(".k-indexator-container"),
+            $imagesContainer = $(".k-images-container"),
+            $div,
+            $img,
+            classActive = "\" class=\"active\"",
+            i;
+        
+        if (galleryLoaded) {
+            main.nextPrevBtnClicked();
+            return;
+        }
+
+        $indexatorContainer.empty();
+        $imagesContainer.empty();
+
+        jQuery.get('galleries/galleriNamesInFolder', function(result) {
+            for (i = 0; i < result.length; i++) {
+                if (i === 0) {
+                    $indexatorContainer.append(
+                        "<li data-target=\"#k-gallery-slider\" data-slide-to=\"" + i + classActive + "\"></li>"
+                    );
+
+                    $imagesContainer.append(
+                        "<div class=\"item" + (i === 0 ? " active" : "") + "\">" + 
+                        "<img src='images/gal/" + result[i] + "' onload='main.nextPrevBtnClicked();'></div>"
+                    );
+                }
+                else {
+                    $indexatorContainer.append(
+                        "<li data-target=\"#k-gallery-slider\" data-slide-to=\"" + i + "\"></li>"
+                    );
+    
+                    $imagesContainer.append(
+                        "<div class=\"item\">" + 
+                        "<img src=\"images/gal/" + result[i] + "\"></div>"
+                    );
+                }
+            }
+
+            galleryLoaded = true;
+        });
+    }
+    
     function removeStylesOfTheGalViewHtml($slider, $img, $view) {
         $img.removeAttr("style");
         $slider.removeAttr("style");
@@ -102,33 +138,12 @@
         }
     }
 
-    function onResizeDesideIfItIsPhoneStanding() {
-        var $html = $('html');
-
-        if ($html.height() > $html.width()) {
-            $('.k-nav').addClass('phone');
-            $('.k-top-right-container').addClass('phone');
-            $('.k-val-kun-logo').addClass('phone');
-            $('.k-single-gal').addClass('phone');
-            $('.k-bottom-left-container').addClass('phone');
-            $('.k-bio-view').addClass('phone');
-        }
-        else {
-            $('.k-nav').removeClass('phone');
-            $('.k-top-right-container').removeClass('phone');
-            $('.k-val-kun-logo').removeClass('phone');
-            $('.k-single-gal').removeClass('phone');
-            $('.k-bottom-left-container').removeClass('phone');
-            $('.k-bio-view').removeClass('phone');
-        }
-    }
-
     onResizeDesideIfItIsPhoneStanding();
 
     $body
-        .on("slid.bs.carousel", "#k-gallery-slider", nextPrevBtnClicked)
+        .on("slid.bs.carousel", "#k-gallery-slider", main.nextPrevBtnClicked)
         .on('click', '.k-nav-bar > li:not(.active)', handleNavClicke)
     ;
 
-    $(window).on('resize', nextPrevBtnClicked);
+    $(window).on('resize', main.nextPrevBtnClicked);
 }();
