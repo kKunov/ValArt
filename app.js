@@ -26,7 +26,7 @@ app.use('/js',express.static(path.join(__dirname, 'public/javascripts')));
 app.use('/', index);
 app.use('/home', index);
 app.use('/gallery', index);
-app.use('/biogrhaphy', index);
+app.use('/biography', index);
 app.use('/contacts', index);
 app.use('/galleries', galleries);
 
