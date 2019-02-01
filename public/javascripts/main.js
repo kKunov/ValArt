@@ -128,17 +128,63 @@ var main = {};
 
         if ($this.hasClass('k-biography')) {
             $('.k-bio-view').removeAttr('style');
+            window.history.pushState('Biography', 'Biography', '/biography');
         }
         else if ($this.hasClass('k-galleries-navbar')){
             $(".k-single-gal").removeAttr("style");
             galClicked();
+            window.history.pushState('Gallery', 'Gallery', '/gallery');
         }
         else if ($this.hasClass('k-contacts')) {
             $(".k-contacts-view").removeAttr("style");
+            window.history.pushState('Contacts', 'Contacts', '/contacts');
+        }
+        else {
+            window.history.pushState('Home', 'Home', '/home');
         }
     }
 
     onResizeDesideIfItIsPhoneStanding();
+
+    $(document).ready(function($) {
+        if (window.history && window.history.pushState) {
+            $(window).on('popstate', function() {
+                var hashLocation = location.hash;
+                var hashSplit = hashLocation.split("#!/");
+                var hashName = hashSplit[1];
+                var url = window.location.href;
+                
+                if (hashName !== '') {
+                    if (url.endsWith('/home')) {
+                        $('.k-home-navbar').trigger('click');
+                    }
+                    else if (url.endsWith('/gallery')) {
+                        $('.k-galleries-navbar').trigger('click');
+                    }
+                    else if (url.endsWith('/biography')) {
+                        $('.k-biography').trigger('click');
+                    }
+                    else if (url.endsWith('/contacts')) {
+                        $('.k-contacts').trigger('click');
+                    }
+                }
+            });
+        
+            var url = window.location.href;
+
+            if (url.endsWith('/gallery')) {
+                $('.k-galleries-navbar').trigger('click');
+            }
+            else if (url.endsWith('/biography')) {
+                $('.k-biography').trigger('click');
+            }
+            else if (url.endsWith('/contacts')) {
+                $('.k-contacts').trigger('click');
+            }
+
+            //window.history.pushState('forward', null, '/home');
+        }
+    });
 
     $body
         .on("slid.bs.carousel", "#k-gallery-slider", main.nextPrevBtnClicked)
