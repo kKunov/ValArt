@@ -181,8 +181,6 @@ var main = {};
             else if (url.endsWith('/contacts')) {
                 $('.k-contacts').trigger('click');
             }
-
-            //window.history.pushState('forward', null, '/home');
         }
     });
 
