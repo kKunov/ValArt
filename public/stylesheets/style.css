@@ -134,17 +134,13 @@ nav.k-nav ul.k-nav-bar hr.k-nav-bar-hr {
     top: 1.5vh;
 }
 
-.k-val-kun-logo img {
-    height: 26vh;
-}
-
 /* LOGO PHONE */ 
 .k-val-kun-logo.phone {
     left: 53vw;
 }
 
 .k-val-kun-logo img {
-    height: 20vh;
+    height: 28vh;
 }
 
 /* GALLERY */
