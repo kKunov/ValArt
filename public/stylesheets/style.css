@@ -109,14 +109,16 @@ nav.k-nav ul.k-nav-bar hr.k-nav-bar-hr {
 .k-top-right-container {
     position: fixed;
     top: 8vh;
-    left: 56vw;
+    left: 40vw;
     text-align: center;
+    width: 60vw;
 }
 
 /* TOP RIGHT TEXT PHONE */
 .k-top-right-container.phone {
-    top: 24vh;
-    left: 53vw;
+    top: 27vh;
+    left: 40vw;
+    font-size: 0.8em;
 }
 
 .k-first-text-top {
@@ -136,11 +138,35 @@ nav.k-nav ul.k-nav-bar hr.k-nav-bar-hr {
 
 /* LOGO PHONE */ 
 .k-val-kun-logo.phone {
-    left: 53vw;
+    left: 45vw;
 }
 
 .k-val-kun-logo img {
     height: 28vh;
+}
+
+.k-home-page {
+    position: fixed;
+    max-height: 58%;
+    width:  60%;
+    top: 30%;
+    left: 40%;
+
+    font-family: 'Guatami';
+
+    font-size: 3em;
+    color: white;
+}
+
+.k-home-page.phone {
+    top: 69%;
+    font-size: 1.7em;
+    width: 75%;
+    left: 26.5%;
+}
+
+.k-home-page > .k-home-page-text-official-miss-cata-photographer {
+    text-align: center;
 }
 
 /* GALLERY */

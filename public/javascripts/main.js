@@ -57,6 +57,7 @@ var main = {};
             $('.k-single-gal').addClass('phone');
             $('.k-bottom-left-container').addClass('phone');
             $('.k-bio-view').addClass('phone');
+            $('.k-home-page').addClass('phone');
         }
         else {
             $('.k-nav').removeClass('phone');
@@ -65,6 +66,7 @@ var main = {};
             $('.k-single-gal').removeClass('phone');
             $('.k-bottom-left-container').removeClass('phone');
             $('.k-bio-view').removeClass('phone');
+            $('.k-home-page').removeClass('phone');
         }
     }
 
@@ -140,6 +142,7 @@ var main = {};
             window.history.pushState('Contacts', 'Contacts', '/contacts');
         }
         else {
+            $('.k-home-page').removeAttr('style');
             window.history.pushState('Home', 'Home', '/home');
         }
     }
